@@ -41,5 +41,21 @@ class Page {
 }
 
 
+var page = new Page('page title', 'page content');
+console.log(page.viewPage());
+console.log();
+page.addText('more page content')
+console.log();
+console.log(page.viewPage());
+console.log();
+console.log(page.searchWord('more'));
+console.log();
+console.log(page.containsDiggits());
+page.deleteText();
+console.log('should be empty ' + page.viewPage());
+
+
+
+
 
 
