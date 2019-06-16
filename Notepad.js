@@ -40,6 +40,42 @@ class Page {
 
 }
 
+class SimpleNotepad {
+    constructor(numberOfPages) {
+        if (typeof numberOfPages === 'number' && numberOfPages > 0) {
+            this.numberOfPages = numberOfPages;
+            this.notepad = [];
+            for (var index = 0; index < numberOfPages; ++index) {
+                this.notepad.push(new Page());
+            }
+        }
+        else {
+            console.log('Invalid number of pages');
+        }
+        this.validPageNumber = (pageNumber) => {
+            if (pageNumber > this.numberOfPages) {
+                console.log('Invalid number of pages');
+                return false;
+            }
+            return true;
+        }
+    }
+
+    addTitle(title, pageNumber) {
+        if (this.validPageNumber(pageNumber)) {
+            this.notepad[pageNumber].changeTitle(title);
+        }
+    }
+
+    addText(text, pageNumber) {
+        if (this.validPageNumber(pageNumber)) {
+            this.notepad[pageNumber].addText(text);
+        }
+
+    }
+
+}
+
 
 var page = new Page('page title', 'page content');
 console.log(page.viewPage());
