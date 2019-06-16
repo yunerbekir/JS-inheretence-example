@@ -73,6 +73,44 @@ class SimpleNotepad {
         }
 
     }
+    
+    rewriteText(text, pageNumber) {
+        if (this.validPageNumber(pageNumber)) {
+            this.notepad[pageNumber].deleteText();
+            this.notepad[pageNumber].addText(text);
+        }
+
+    }
+
+    deleteText(pageNumber) {
+        if (this.validPageNumber(pageNumber)) {
+            this.notepad[pageNumber].deleteText();
+        }
+    }
+
+    showNotepad() {
+        this.notepad.forEach((page) => {
+            let pageText = page.viewPage();
+            if (pageText != '\n') {
+                console.log(pageText);
+            }
+        })
+    }
+
+    searchWord(word, pageNumber) {
+        if (this.validPageNumber(pageNumber)) {
+            return this.notepad[pageNumber].searchWord(word);
+        }
+
+    }
+
+    printAllPagesWithDiggits() {
+        this.notepad.forEach((page) => {
+            if (page.containsDiggits()) {
+                console.log(page.viewPage());
+            }
+        })
+    }
 
 }
 
