@@ -73,7 +73,7 @@ class SimpleNotepad {
         }
 
     }
-    
+
     rewriteText(text, pageNumber) {
         if (this.validPageNumber(pageNumber)) {
             this.notepad[pageNumber].deleteText();
@@ -115,20 +115,38 @@ class SimpleNotepad {
 }
 
 
-var page = new Page('page title', 'page content');
-console.log(page.viewPage());
-console.log();
-page.addText('more page content')
-console.log();
-console.log(page.viewPage());
-console.log();
-console.log(page.searchWord('more'));
-console.log();
-console.log(page.containsDiggits());
-page.deleteText();
-console.log('should be empty ' + page.viewPage());
+// var page = new Page('page title', 'page content');
+// console.log(page.viewPage());
+// console.log();
+// page.addText('more page content')
+// console.log();
+// console.log(page.viewPage());
+// console.log();
+// console.log(page.searchWord('more'));
+// console.log();
+// console.log(page.containsDiggits());
+// page.deleteText();
+// console.log('should be empty ' + page.viewPage());
 
-
+console.log('-------------------------------------');
+var simpleNotepad = new SimpleNotepad(5);
+simpleNotepad.addTitle('first page title', 0);
+simpleNotepad.showNotepad();
+console.log();
+simpleNotepad.addText('first page text', 0);
+simpleNotepad.showNotepad();
+console.log();
+simpleNotepad.rewriteText('first page rewriten text',0);
+simpleNotepad.showNotepad();
+console.log();
+console.log(simpleNotepad.SearchWord('rewriten',0));
+console.log();
+simpleNotepad.addText('123 adw',1);
+simpleNotepad.PrintAllPagesWithDiggits();
+simpleNotepad.deleteText(0);
+console.log('should not contain any body text');
+simpleNotepad.showNotepad();
+console.log();
 
 
 
