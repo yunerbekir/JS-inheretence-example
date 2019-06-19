@@ -179,25 +179,42 @@ class SecuredNotepad extends SimpleNotepad {
 // page.deleteText();
 // console.log('should be empty ' + page.viewPage());
 
+// console.log('-------------------------------------');
+// var simpleNotepad = new SimpleNotepad(5);
+// simpleNotepad.addTitle('first page title', 0);
+// simpleNotepad.showNotepad();
+// console.log();
+// simpleNotepad.addText('first page text', 0);
+// simpleNotepad.showNotepad();
+// console.log();
+// simpleNotepad.rewriteText('first page rewriten text',0);
+// simpleNotepad.showNotepad();
+// console.log();
+// console.log(simpleNotepad.SearchWord('rewriten',0));
+// console.log();
+// simpleNotepad.addText('123 adw',1);
+// simpleNotepad.PrintAllPagesWithDiggits();
+// simpleNotepad.deleteText(0);
+// console.log('should not contain any body text');
+// simpleNotepad.showNotepad();
+// console.log();
+
 console.log('-------------------------------------');
-var simpleNotepad = new SimpleNotepad(5);
-simpleNotepad.addTitle('first page title', 0);
-simpleNotepad.showNotepad();
+var secureNotepad = new SecuredNotepad(5, '12345');
+secureNotepad.addTitle('first page title', 0, '12345');
+secureNotepad.showNotepad('12345');
 console.log();
-simpleNotepad.addText('first page text', 0);
-simpleNotepad.showNotepad();
+secureNotepad.addText('first page text', 0, '12345');
+secureNotepad.showNotepad('12345');
 console.log();
-simpleNotepad.rewriteText('first page rewriten text',0);
-simpleNotepad.showNotepad();
+secureNotepad.rewriteText('first page rewriten text', 0, '12345');
+secureNotepad.showNotepad('12345');
 console.log();
-console.log(simpleNotepad.SearchWord('rewriten',0));
-console.log();
-simpleNotepad.addText('123 adw',1);
-simpleNotepad.PrintAllPagesWithDiggits();
-simpleNotepad.deleteText(0);
+secureNotepad.deleteText(0, '12345');
 console.log('should not contain any body text');
-simpleNotepad.showNotepad();
+secureNotepad.showNotepad('12345');
 console.log();
+
 
 
 
