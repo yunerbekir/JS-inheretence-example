@@ -165,6 +165,147 @@ class SecuredNotepad extends SimpleNotepad {
 
 }
 
+class SecuredNotepad extends SimpleNotepad {
+    constructor(numberOfPages, password) {
+        super(numberOfPages);
+        this.password = password;
+        console.log(this.showNotepad)
+        this.passwordIsCorrect = (inputPassword) => {
+            if (inputPassword === this.password) {
+                return true;
+            }
+            else {
+                console.log('Invalid password');
+            }
+        }
+    }
+
+    addTitle(title, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.addTitle(title, pageNumber);
+        }
+    }
+
+    addText(text, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.addText(text, pageNumber);
+        }
+    }
+
+    rewriteText(text, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.rewriteText(text, pageNumber);
+        }
+    }
+
+    deleteText(pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.deleteText(pageNumber);
+        }
+    }
+
+    showNotepad(password) {
+        if (this.passwordIsCorrect(password)) {
+            super.showNotepad();
+        }
+    }
+
+    searchWord(word, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.searchWord(word, pageNumber);
+        }
+    }
+
+    printAllPagesWithDiggits(password) {
+        if (this.passwordIsCorrect(password)) {
+            super.printAllPagesWithDiggits();
+        }
+    }
+
+}
+
+class ElectronicSecuredNotepad extends SecuredNotepad {
+    constructor(numberOfPages, password) {
+        super(numberOfPages, password);
+        this.isOn = false;
+        this.timeCreated= new Date();
+        this.checkWhetherIsOn = () => {
+            if (this.isOn) {
+                // update last date of change
+                return true;
+            }
+            else {
+                console.log('Device is not turned on')
+                return false;
+            }
+        }
+    }
+    turnOn() {
+        this.isOn = true;
+    }
+    turnOf() {
+        this.isOn = false;
+    }
+
+    addTitle(title, pageNumber, password) {
+        if (this.checkWhetherIsOn()) {
+            super.addTitle(title, pageNumber, password);
+        }
+    }
+    addText(text, pageNumber, password) {
+        if (this.checkWhetherIsOn()) {
+            super.addText(text, pageNumber, password);
+        }
+    }
+    rewriteText(text, pageNumber, password) {
+        if (this.checkWhetherIsOn()) {
+            super.rewriteText(text, pageNumber, password);
+        }
+    }
+    deleteText(pageNumber, password) {
+        if (this.checkWhetherIsOn()) {
+            super.deleteText(pageNumber, password);
+        }
+    }
+    showNotepad(password) {
+        if (this.checkWhetherIsOn()) {
+            super.showNotepad(password);
+        }
+    }
+    searchWord(word, pageNumber, password) {
+        if (this.checkWhetherIsOn()) {
+            super.searchWord(word, pageNumber, password);
+        }
+    }
+    printAllPagesWithDiggits(password) {
+        if (this.checkWhetherIsOn()) {
+            super.printAllPagesWithDiggits(password);
+        }
+    }
+
+    backupContentsToServer(backupServer) {
+        if (this.checkWhetherIsOn()) {
+            // Logic for backing up the contents
+            // of the notepad
+        }
+    }
+
+    sharePage(pageNumber, destination) {
+        if (this.checkWhetherIsOn()) {
+            // get the contents of a certain page
+            // share them to destination
+        }
+    }
+
+    deleteContentsOfNotepad() {
+        if (this.checkWhetherIsOn()) {
+            // deleting the content of the notepad
+            // in a inreversable way
+        }
+    }
+
+}
+
 
 // var page = new Page('page title', 'page content');
 // console.log(page.viewPage());
@@ -199,21 +340,21 @@ class SecuredNotepad extends SimpleNotepad {
 // simpleNotepad.showNotepad();
 // console.log();
 
-console.log('-------------------------------------');
-var secureNotepad = new SecuredNotepad(5, '12345');
-secureNotepad.addTitle('first page title', 0, '12345');
-secureNotepad.showNotepad('12345');
-console.log();
-secureNotepad.addText('first page text', 0, '12345');
-secureNotepad.showNotepad('12345');
-console.log();
-secureNotepad.rewriteText('first page rewriten text', 0, '12345');
-secureNotepad.showNotepad('12345');
-console.log();
-secureNotepad.deleteText(0, '12345');
-console.log('should not contain any body text');
-secureNotepad.showNotepad('12345');
-console.log();
+// console.log('-------------------------------------');
+// var secureNotepad = new SecuredNotepad(5, '12345');
+// secureNotepad.addTitle('first page title', 0, '12345');
+// secureNotepad.showNotepad('12345');
+// console.log();
+// secureNotepad.addText('first page text', 0, '12345');
+// secureNotepad.showNotepad('12345');
+// console.log();
+// secureNotepad.rewriteText('first page rewriten text', 0, '12345');
+// secureNotepad.showNotepad('12345');
+// console.log();
+// secureNotepad.deleteText(0, '12345');
+// console.log('should not contain any body text');
+// secureNotepad.showNotepad('12345');
+// console.log();
 
 
 
