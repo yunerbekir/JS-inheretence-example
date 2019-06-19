@@ -114,6 +114,57 @@ class SimpleNotepad {
 
 }
 
+class SecuredNotepad extends SimpleNotepad {
+    constructor(numberOfPages, password) {
+        super(numberOfPages);
+        this.password = password;
+        this.passwordIsCorrect = (inputPassword) => {
+            if (inputPassword === this.password) {
+                return true;
+            }
+            else {
+                console.log('Invalid password');
+            }
+        }
+    }
+    addTitle(title, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.addTitle(title, pageNumber);
+        }
+    }
+    addText(text, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.addText(text, pageNumber);
+        }
+    }
+    rewriteText(text, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.rewriteText(text, pageNumber);
+        }
+    }
+    deleteText(pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.deleteText(pageNumber);
+        }
+    }
+    showNotepad(password) {
+        if (this.passwordIsCorrect(password)) {
+            super.showNotepad();
+        }
+    }
+    searchWord(word, pageNumber, password) {
+        if (this.passwordIsCorrect(password)) {
+            super.searchWord(word, pageNumber);
+        }
+    }
+    printAllPagesWithDiggits(password) {
+        if (this.passwordIsCorrect(password)) {
+            super.printAllPagesWithDiggits();
+        }
+    }
+
+}
+
 
 // var page = new Page('page title', 'page content');
 // console.log(page.viewPage());
