@@ -114,57 +114,7 @@ class SimpleNotepad {
 
 }
 
-class SecuredNotepad extends SimpleNotepad {
-    constructor(numberOfPages, password) {
-        super(numberOfPages);
-        this.password = password;
-        this.passwordIsCorrect = (inputPassword) => {
-            if (inputPassword === this.password) {
-                return true;
-            }
-            else {
-                console.log('Invalid password');
-            }
-        }
-    }
-    addTitle(title, pageNumber, password) {
-        if (this.passwordIsCorrect(password)) {
-            super.addTitle(title, pageNumber);
-        }
-    }
-    addText(text, pageNumber, password) {
-        if (this.passwordIsCorrect(password)) {
-            super.addText(text, pageNumber);
-        }
-    }
-    rewriteText(text, pageNumber, password) {
-        if (this.passwordIsCorrect(password)) {
-            super.rewriteText(text, pageNumber);
-        }
-    }
-    deleteText(pageNumber, password) {
-        if (this.passwordIsCorrect(password)) {
-            super.deleteText(pageNumber);
-        }
-    }
-    showNotepad(password) {
-        if (this.passwordIsCorrect(password)) {
-            super.showNotepad();
-        }
-    }
-    searchWord(word, pageNumber, password) {
-        if (this.passwordIsCorrect(password)) {
-            super.searchWord(word, pageNumber);
-        }
-    }
-    printAllPagesWithDiggits(password) {
-        if (this.passwordIsCorrect(password)) {
-            super.printAllPagesWithDiggits();
-        }
-    }
-
-}
-
+// expands SimpleNotepad by requiring a password parameter
 class SecuredNotepad extends SimpleNotepad {
     constructor(numberOfPages, password) {
         super(numberOfPages);
@@ -224,6 +174,8 @@ class SecuredNotepad extends SimpleNotepad {
 
 }
 
+// expands SecuredNotepad by having a state: ON/OFF
+// when OFF you can't do any operations on the class
 class ElectronicSecuredNotepad extends SecuredNotepad {
     constructor(numberOfPages, password) {
         super(numberOfPages, password);
